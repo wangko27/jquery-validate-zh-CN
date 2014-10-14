@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<title>demo-jquery-validate-zh-CN</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/prettify_bootstrap.css">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link href="css/site.css" rel="stylesheet">
@@ -65,6 +66,66 @@
 					</div>
 				</div>
 			</div>
+			<!--开始-->
+			<div class="row">
+                <div class="span6">
+                    <h2 id="itturnsthis">实例代码</h2>
+                    <pre class="prettyprint linenums lang-html pre-scrollable">
+&lt;p&gt;Sample text here...&lt;/p&gt;
+&lt;p&gt;Sample text here...&lt;/p&gt;
+                    </pre>
+                </div>
+                <div class="span6">
+                    <h2 id="intothis">入门案例</h2>
+                    <form class="form-horizontal" id="inputForm">
+                        <div class="control-group">
+                            <label class="control-label" for="username">用户名</label>
+                            <div class="controls">
+                                <input type="text" name="username" id="username" class="{required:true,username:true}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="email">电子邮件</label>
+                            <div class="controls">
+                                <input type="text" id="email" name="email" class="{required:true,email:true}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="terms-and-conditions">服务协议</label>
+                            <div class="controls">
+                                <label class="checkbox">
+                                    <input type="checkbox" id="terms-and-conditions" name="terms-and-conditions" class="{required:true}">
+                                    我已阅读并同意<a href="#">《用户注册协议》</a>
+                                </label>
+                                <p class="help-block"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">我常来往的城市</label>
+                            <div class="controls">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="mycities[]" value="beijing"/>
+                                    北京
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="mycities[]" value="kunming"/>
+                                    昆明
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="mycities[]" value="zhaotong"/>
+                                    昭通
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">提交验证<i class="icon-ok icon-white"></i></button><br />
+                            (该操作将不会提交到真实服务器，你懂的)
+                        </div>
+                    </form>
+                </div>
+            </div>
+			
+	
 			<div class="row">
 				<div class="span3">
 					<div class="well" style="padding: 8px 0;">
@@ -325,5 +386,25 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/site.js"></script>
+		<script src="js/prettify.js"></script>
+		
+		<!--引入验证的js代码--->
+		<script src="../jquery-validation/jquery.validate.js"></script>
+		<script src="../jquery-validation/jquery.validate.methods.js"></script>
+		<script src="../jquery-validation/jquery.metadata.js"></script>
+		<script src="../jquery-validation/jquery.validate.zh-CN.js"></script>
+		
+		<!--代码片段-->
+		 <script>
+            $(function() {
+                prettyPrint();
+				
+				$("#inputForm").validate({
+					 //errorPlacement: function(error, element) {
+						//error.appendTo(element.next(".error"));
+					//}
+				});
+            });
+        </script>
 	</body>
 </html>
