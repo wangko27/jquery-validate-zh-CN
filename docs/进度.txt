@@ -1,0 +1,140 @@
+surety insurance
+1 测试跟安华的demo
+2 把用到的实体类编写到manager的项目中，
+3 录入保证保险的信息表单校验 待做
+4 在表单填写完成后通过InsuredLocalbean接收，然后提交给DAO保存到数据库。
+5 在保存到数据库之前需要把该投保信息通过webservice提交给安华的服务器，
+6 然后如果处理保证保险间实体的关系。 
+
+
+ <div class="control-group">
+	<label class="control-label" for="Statisticsym">保单统计年月</label>
+	<div class="controls">
+		<input type="text"
+		id="Statisticsym"
+		name="Statisticsym"/>
+	</div>
+</div>
+
+
+这个字段前期做过变更，见以下：
+以下字段请增加字典信息描述，由原文字描述变更为字典，数据类型不变
+投保人婚姻状况
+AppliMarriage
+ 1代表未婚，2代表已婚，3丧偶，4离婚，9其他
+被保人婚姻状况
+ 　InsuredMarriage
+ 1代表未婚，2代表已婚，3丧偶，4离婚，9其他
+ 
+ http://fy.webxml.com.cn/webservices/EnglishChinese.asmx?wsdl
+ 
+ 
+<div class="input-group">
+	<input class="form-control date-picker" id="id-date-picker-1" data-date-format="dd-mm-yyyy" type="text">
+	<span class="input-group-addon">
+		<i class="icon-calendar bigger-110"></i>
+	</span>
+</div>
+
+20141008
+ 1 测试webservice接口 如果把wsdl文件放入到WEB-INF下，能以后就可以不用修改代码，而只修改wsdl的文件
+ 2 把保证保险列表查询出来显示
+ 
+ 
+ 
+ 2014 10-9
+ 讨论 梳理一下贷款保证保险的流程
+  1 保证保险提交给安华之前的信息 。。
+  2 提交给安华之后 安华收到信息，给出收到回复信息  暂不提示核保信息
+  3 在安华服务器核保(不管是自动还是手动)通过后，然后调用安润的接口，附加核保通过后的信息，
+  4 安润在修改保证保单的状态为核保通过
+  5 问题 在核保通过后应该发送邮件给投保人员还是工作人员 提示缴费？
+  
+  
+  2014 10-10 
+  
+  1 todo 读取配置属性文件信息
+  2 把表单修改成标签页切换方式
+  3 提交保证保险信息后，把该信息发送给安华服务器，然后回调时，把该信息保存到数据库
+	a 程序中调用顺序 从insuredresource -> suretyInsuranceLocalBean -> 然后调用anhuaServiceLocalBean 发送 webservice
+	b 处理逻辑 是否安华接收正确
+	c 校验通过与否
+	
+  4 开发核保通过后的接口
+  5 开发批改信息的提交
+  6 开发核批通过的回调接口
+  
+  
+  2014 10-11
+  
+  1 计划拆分保存到本地和提交给安华服务器，分开来做
+   实现方式如下：首先填写所有信息，保险信息，投保人信息，被保险人信息，
+     -》保存，所有信息保存到本地数据库
+	 -》修改 如遇错误信息，可修改
+	 -> 去报无误后，提交给安华接口
+	 -》根据提交业务处理时否提交成功，如果提交未成功，查明原因后在修改提交。
+	 
+	 -》在提交成功，将不能在继续修改普通信息，只能修改被保险人的信息
+	 
+	 -》 核批也是修改后在提交
+	 
+	 1 为提交之前的修改
+	 2 提交给安华服务器器请求发送
+	 
+	 2014 -10-13  工作计划
+	 1 完成提交给安华之前修改功能 *已完成
+	 2 完善表单校验//优化过程修改
+	 3 提交给安华 *服务器暂时无法访问
+	 4 回调修改保单状态 回调暂时未成功
+	 5 实体信息的字段矫正 //优化过程修改
+	 6 修改为jquery validation校验* 
+	 7 删除功能
+	明天
+	1 批改
+	2 测试
+	3 
+	  <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>jsr311-api</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>1.1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>1.1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.1.4</version>
+        </dependency>
+		
+		
+	2014-10-14 工作总计
+	
+	现已完成功能如下：
+		1 保证保险本地数据校验、保存、修改、删除(未提交之前可删除)。
+		2 把保证保险数据提交给安华服务器，本地已开发好。
+		3 核保通过后的接口跟安华已调试成功。
+		4 批改页面已完成。
+		5 修改保证保险中被保险人的信息。
+		6 优化了提交中数据校验。确保数据的准确性。
+		
+	待继续开发功能：
+	    1 核保通过后的接口
+		3 核保提交给安华处理
+		4 发布到测试环境继续测试观察
+		
+		
+	
+  
+  
+
+ 
+
+
