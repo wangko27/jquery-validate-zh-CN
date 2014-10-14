@@ -71,8 +71,68 @@
                 <div class="span6">
                     <h2 id="itturnsthis">实例代码</h2>
                     <pre class="prettyprint linenums lang-html pre-scrollable">
-&lt;p&gt;Sample text here...&lt;/p&gt;
-&lt;p&gt;Sample text here...&lt;/p&gt;
+&lt;form class="form-horizontal" id="inputForm"&gt;
+	&lt;div class="control-group"&gt;
+		&lt;label class="control-label" 
+		for="username"&gt;用户名&lt;/label&gt;
+		&lt;div class="controls"&gt;
+		   &lt;input type="text" name="username" id="username" 
+		   class="{required:true,username:true}"&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+		&lt;div class="control-group"&gt;
+		&lt;label class="control-label" 
+		for="email"&gt;电子邮件&lt;/label&gt;
+		&lt;div class="controls"&gt;
+		&lt;input type="text" id="email" name="email" 
+		class="{required:true,email:true}"&gt;
+	&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="control-group"&gt;
+		&lt;label class="control-label" 
+		for="terms-and-conditions"&gt;服务协议&lt;/label&gt;
+		&lt;div class="controls"&gt;
+		&lt;label class="checkbox"&gt;
+		&lt;input type="checkbox" 
+		id="terms-and-conditions" 
+		name="terms-and-conditions"
+		class="{required:true}"&gt;
+		我已阅读并同意
+		&lt;a href="#"&gt;《用户注册协议》&lt;/a&gt;
+		&lt;/label&gt;
+		&lt;p class="help-block"&gt;&lt;/p&gt;
+	&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="control-group"&gt;
+		&lt;label class="control-label"&gt;我常来往的城市&lt;/label&gt;
+		&lt;div class="controls"&gt;
+		&lt;label class="checkbox"&gt;
+		&lt;input type="checkbox" 
+		name="mycities[]" 
+		value="beijing"/&gt;
+		北京
+		&lt;/label&gt;
+		&lt;label class="checkbox"&gt;
+		&lt;input type="checkbox" 
+		name="mycities[]" 
+		value="kunming"/&gt;
+		昆明
+		&lt;/label&gt;
+		&lt;label class="checkbox"&gt;
+		&lt;input type="checkbox" 
+		name="mycities[]" 
+		value="zhaotong"/&gt;
+		昭通
+		&lt;/label&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+		&lt;div class="form-actions"&gt;
+		&lt;button type="submit"
+		class="btn btn-primary"&gt;提交验证
+		&lt;i class="icon-ok icon-white"&gt;&lt;/i&gt;&lt;/button&gt;&lt;br /&gt;
+		(该操作将不会提交到真实服务器，你懂的)
+	&lt;/div&gt;
+&lt;/form&gt;
                     </pre>
                 </div>
                 <div class="span6">
@@ -104,7 +164,7 @@
                             <label class="control-label">我常来往的城市</label>
                             <div class="controls">
                                 <label class="checkbox">
-                                    <input type="checkbox" name="mycities[]" value="beijing"/>
+                                    <input type="checkbox" name="mycities[]" value="beijing" class="{required:true,minlength:2,messages:{required:'至少选择两项',minlength:'至少选择两项'}}"/>
                                     北京
                                 </label>
                                 <label class="checkbox">
@@ -124,262 +184,70 @@
                     </form>
                 </div>
             </div>
-			
-	
+			<!---validators============================--->
 			<div class="row">
 				<div class="span3">
 					<div class="well" style="padding: 8px 0;">
 						<ul class="nav nav-list">
-							<li class="nav-header">
-								Akira
-							</li>
-							<li class="active">
-								<a href="index.htm"><i class="icon-white icon-home"></i> Dashboard</a>
-							</li>
-							<li>
-								<a href="projects.htm"><i class="icon-folder-open"></i> Projects</a>
-							</li>
-							<li>
-								<a href="tasks.htm"><i class="icon-check"></i> Tasks</a>
-							</li>
-							<li>
-								<a href="messages.htm"><i class="icon-envelope"></i> Messages</a>
-							</li>
-							<li>
-								<a href="files.htm"><i class="icon-file"></i> Files</a>
-							</li>
-							<li>
-								<a href="activity.htm"><i class="icon-list-alt"></i> Activity</a>
-							</li>
-							<li class="nav-header">
-								Your Account
-							</li>
-							<li>
-								<a href="profile.htm"><i class="icon-user"></i> Profile</a>
-							</li>
-							<li>
-								<a href="settings.htm"><i class="icon-cog"></i> Settings</a>
-							</li>
-							<li class="divider">
-							</li>
-							<li>
-								<a href="help.htm"><i class="icon-info-sign"></i> Help</a>
-							</li>
-							<li class="nav-header">
-								Bonus Templates
-							</li>
-							<li>
-								<a href="gallery.htm"><i class="icon-picture"></i> Gallery</a>
-							</li>
-							<li>
-								<a href="blank.htm"><i class="icon-stop"></i> Blank Slate</a>
-							</li>
+							<li class="nav-header">HTML5 based</li>
+                            <li class="active"><a href="#validators_email" data-toggle="tab">Email</a></li>
+                            <li><a href="#validators_number" data-toggle="tab">Number</a></li>
+                            <li><a href="#validators_required" data-toggle="tab">Required</a></li>
+                            <li><a href="#validators_max" data-toggle="tab">Max</a></li>
+                            <li><a href="#validators_min" data-toggle="tab">Min</a></li>
+                            <li><a href="#validators_maxlength" data-toggle="tab">Max length</a></li>
+                            <li><a href="#validators_minlength" data-toggle="tab">Min length</a></li>
+                            <li><a href="#validators_pattern" data-toggle="tab">Pattern</a></li>
+                            <li class="nav-header">Extras</li>
+                            <li><a href="#validators_match" data-toggle="tab">Match</a></li>
+                            <li><a href="#validators_maxchecked" data-toggle="tab">Max checked</a></li>
+                            <li><a href="#validators_minchecked" data-toggle="tab">Min checked</a></li>
+                            <li><a href="#validators_regex" data-toggle="tab">Regex</a></li>
+                            <li><a href="#validators_callback" data-toggle="tab">Callback</a></li>
+                            <li><a href="#validators_ajax" data-toggle="tab">AJAX</a></li>
+                            <li class="nav-header">Build your own</li>
+                            <li><a href="#validators_create_mix" data-toggle="tab">Mix and multiply</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="span9">
-					<h1>
-						Dashboard
-					</h1>
-					<div class="hero-unit">
-						<h1>
-							Welcome!
-						</h1>
-						<p>
-							To get the most out of Akira start with our 3 minute tour.
-						</p>
-						<p>
-							<a href="help.htm" class="btn btn-primary btn-large">Start Tour</a> <a class="btn btn-large">No Thanks</a>
-						</p>
-					</div>
-					<div class="well summary">
-						<ul>
-							<li>
-								<a href="#"><span class="count">3</span> Projects</a>
-							</li>
-							<li>
-								<a href="#"><span class="count">27</span> Tasks</a>
-							</li>
-							<li>
-								<a href="#"><span class="count">7</span> Messages</a>
-							</li>
-							<li class="last">
-								<a href="#"><span class="count">5</span> Files</a>
-							</li>
-						</ul>
-					</div>
-					<h2>
-						Recent Activity
-					</h2>
-					<table class="table table-bordered table-striped">
-						<thead>
-							<tr>
-								<th>
-									Project
-								</th>
-								<th>
-									Client
-								</th>
-								<th>
-									Type
-								</th>
-								<th>
-									Date
-								</th>
-								<th>
-									View
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									Nike.com Redesign
-								</td>
-								<td>
-									Monsters Inc
-								</td>
-								<td>
-									New Task
-								</td>
-								<td>
-									4 days ago
-								</td>
-								<td>
-									<a href="#" class="view-link">View</a>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Nike.com Redesign
-								</td>
-								<td>
-									Monsters Inc
-								</td>
-								<td>
-									New Message
-								</td>
-								<td>
-									5 days ago
-								</td>
-								<td>
-									<a href="#" class="view-link">View</a>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Nike.com Redesign
-								</td>
-								<td>
-									Monsters Inc
-								</td>
-								<td>
-									New Project
-								</td>
-								<td>
-									5 days ago
-								</td>
-								<td>
-									<a href="#" class="view-link">View</a>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Twitter Server Consulting
-								</td>
-								<td>
-									Bad Robot
-								</td>
-								<td>
-									New Task
-								</td>
-								<td>
-									6 days ago
-								</td>
-								<td>
-									<a href="#" class="view-link">View</a>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Childrens Book Illustration
-								</td>
-								<td>
-									Evil Genius
-								</td>
-								<td>
-									New Message
-								</td>
-								<td>
-									9 days ago
-								</td>
-								<td>
-									<a href="#" class="view-link">View</a>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Twitter Server Consulting
-								</td>
-								<td>
-									Bad Robot
-								</td>
-								<td>
-									New Task
-								</td>
-								<td>
-									16 days ago
-								</td>
-								<td>
-									<a href="#" class="view-link">View</a>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Twitter Server Consulting
-								</td>
-								<td>
-									Bad Robot
-								</td>
-								<td>
-									New Project
-								</td>
-								<td>
-									16 days ago
-								</td>
-								<td>
-									<a href="#" class="view-link">View</a>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Twitter Server Proposal
-								</td>
-								<td>
-									Bad Robot
-								</td>
-								<td>
-									Completed Project
-								</td>
-								<td>
-									20 days ago
-								</td>
-								<td>
-									<a href="#" class="view-link">View</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<ul class="pager">
-						<li class="next">
-							<a href="activity.htm">More &rarr;</a>
-						</li>
-					</ul>
-                    <ul class="pager">
-						<li class="next">
-							More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
-						</li>
-					</ul>
+				<div class="span9 tab-content">
+					 <!-- ========================================== VALIDATORS_EMAIL -->
+                        <div class="tab-pane active" id="validators_email">
+                            <h3>Email address</h3>
+                            <div class="tabbable">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#validators_email_preview" data-toggle="tab">Example</a></li>
+                                    <li><a href="#validators_email_code" data-toggle="tab">Code</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="validators_email_preview">
+                                        <form class="form-horizontal">
+                                            <div class="control-group">
+                                                <label class="control-label">Email address</label>
+                                                <div class="controls">
+                                                    <input type="email" />
+                                                    <p class="help-block"></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-actions"><button type="submit" class="btn btn-primary">Test Validation <i class="icon-ok icon-white"></i></button></div></form>
+                                    </div>
+                                    <div class="tab-pane" id="validators_email_code">
+                                        <pre class="prettyprint lang-html linenums">
+&lt;form class="form-horizontal"&gt;
+  &lt;div class="control-group"&gt;
+    &lt;label class="control-label"&gt;Email address&lt;/label&gt;
+    &lt;div class="controls"&gt;
+      &lt;input type="email" /&gt;
+      &lt;p class="help-block"&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</pre>
+                                    </div>
+                                </div>
+                            </div>
+							<!---==========================tab 2==================--->
+							
+						<!---==========================tab end==================--->	
 				</div>
 			</div>
 		</div>
@@ -399,11 +267,7 @@
             $(function() {
                 prettyPrint();
 				
-				$("#inputForm").validate({
-					 //errorPlacement: function(error, element) {
-						//error.appendTo(element.next(".error"));
-					//}
-				});
+				$("#inputForm").validate();
             });
         </script>
 	</body>
