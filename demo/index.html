@@ -276,9 +276,11 @@
 									</div>
 									 <div class="tab-pane" id="validation-rules-private-preview">
 									 <pre class="prettyprint linenums lang-html pre-scrollable">
-	对于复杂的验证，可以通过jQuery.validator.addMethod添加自定义的验证规则
-	官网提供的additional-methods.js里包含一些常用的验证方式，比如lettersonly，ziprange，nowhitespace等
-// 邮政编码验证
+1 对于复杂的验证，可以通过jQuery.validator.addMethod添加自定义的验证规则
+2 官网提供的additional-methods.js里包含一些常用的验证方式，比如lettersonly，ziprange，nowhitespace等
+3 邮政编码验证,在熟练使用后，你也不用编写这些验证，只需要把jquery.validate.methods.js做相应的修改即可
+
+例如
 jQuery.validator.addMethod("zipCode", function(value, element) {
     var zip = /^[0-9]{6}$/;
     return this.optional(element) || (zip.test(value));
@@ -300,24 +302,57 @@ jQuery.validator.addMethod("zipCode", function(value, element) {
 									<li><a href="#validation-message-private-preview" data-toggle="tab">自定义提示信息</a></li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane" id="validation-message-defalut-preview">
+                                    <div class="tab-pane active" id="validation-message-defalut-preview">
 									 <pre class="prettyprint linenums lang-html pre-scrollable">
-&lt;script&gt;
-  $(function() {
-     //inputForm为需要验证表单ID
-	$("#inputForm").validate();
-  });
-&lt;/script&gt;
+messages: {
+    required: "This field is required.",
+    remote: "Please fix this field.",
+    email: "Please enter a valid email address.",
+    url: "Please enter a valid URL.",
+    date: "Please enter a valid date.",
+    dateISO: "Please enter a valid date (ISO).",
+    dateDE: "Bitte geben Sie ein gültiges Datum ein.",
+    number: "Please enter a valid number.",
+    numberDE: "Bitte geben Sie eine Nummer ein.",
+    digits: "Please enter only digits",
+    creditcard: "Please enter a valid credit card number.",
+    equalTo: "Please enter the same value again.",
+    accept: "Please enter a value with a valid extension.",
+    maxlength: $.validator.format("Please enter no more than {0} characters."),
+    minlength: $.validator.format("Please enter at least {0} characters."),
+    rangelength: $.validator.format("Please enter a value between {0} and {1} characters long."),
+    range: $.validator.format("Please enter a value between {0} and {1}."),
+    max: $.validator.format("Please enter a value less than or equal to {0}."),
+    min: $.validator.format("Please enter a value greater than or equal to {0}.")
+},
 									</pre>
 									</div>
 									 <div class="tab-pane" id="validation-message-private-preview">
 									 <pre class="prettyprint linenums lang-html pre-scrollable">
-&lt;script&gt;
-  $(function() {
-     //inputForm为需要验证表单ID
-	$("#inputForm").validate();
-  });
-&lt;/script&gt;
+说明:
+1 推荐做法，将此文件放入jquery.validate.zh-CN.js中，在页面中引入：
+2 这个文件你将在下载包中找到
+&lt;script src="../jquery-validation/jquery.validate.zh-CN.js"&gt;&lt;/script&gt;
+
+jQuery.extend(jQuery.validator.messages, {
+    required: "必选字段",
+	remote: "请修正该字段",
+	email: "请输入正确格式的电子邮件",
+	url: "请输入合法的网址",
+	date: "请输入合法的日期",
+	dateISO: "请输入合法的日期 (ISO).",
+	number: "请输入合法的数字",
+	digits: "只能输入整数",
+	creditcard: "请输入合法的信用卡号",
+	equalTo: "请再次输入相同的值",
+	accept: "请输入拥有合法后缀名的字符串",
+	maxlength: jQuery.validator.format("请输入一个 长度最多是 {0} 的字符串"),
+	minlength: jQuery.validator.format("请输入一个 长度最少是 {0} 的字符串"),
+	rangelength: jQuery.validator.format("请输入 一个长度介于 {0} 和 {1} 之间的字符串"),
+	range: jQuery.validator.format("请输入一个介于 {0} 和 {1} 之间的值"),
+	max: jQuery.validator.format("请输入一个最大为{0} 的值"),
+	min: jQuery.validator.format("请输入一个最小为{0} 的值")
+});
 									</pre>
 									</div>
                                 </div>
