@@ -184,7 +184,107 @@
                     </form>
                 </div>
             </div>
-			<!---validators============================--->
+			
+			<!--===================安装使用==========---->
+			
+			<div class="row">
+				<div class="span3">
+					<div class="well" style="padding: 8px 0;">
+						<ul class="nav nav-list">
+							<li class="nav-header">HTML5 based</li>
+                            <li class="active"><a href="#how-to-install" data-toggle="tab">准备环境</a></li>
+							<li><a href="#how-to-use" data-toggle="tab">怎么使用</a></li>
+							<li><a href="#validation-rules" data-toggle="tab">验证规则</a></li>
+							<li><a href="#validation-message" data-toggle="tab">提示信息</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="span9 tab-content">
+				
+						<!-- ========================================== how-to-install -->
+                        <div class="tab-pane active" id="how-to-install">
+                            <h3>准备环境</h3>
+                            <div class="tabbable">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#how-to-install-preview" data-toggle="tab">环境设置</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="how-to-install-preview">
+									 <pre class="prettyprint linenums lang-html pre-scrollable">
+&lt;script src="js/jquery.min.js"&gt;&lt;/script&gt;
+&lt;!--引入验证的js代码---&gt;
+&lt;script src="../jquery-validation/jquery.validate.js"&gt;&lt;/script&gt;
+&lt;script src="../jquery-validation/jquery.validate.methods.js"&gt;&lt;/script&gt;
+&lt;script src="../jquery-validation/jquery.metadata.js"&gt;&lt;/script&gt;
+&lt;script src="../jquery-validation/jquery.validate.zh-CN.js"&gt;&lt;/script&gt;
+									</pre>
+									</div>
+                                </div>
+                            </div>
+							</div>
+							<!---==========================tab 2==================--->
+							<!-- ========================================== how-to-use-->
+                        <div class="tab-pane" id="how-to-use">
+                            <h3>怎么使用</h3>
+                            <div class="tabbable">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#how-to-use-preview" data-toggle="tab">基本使用</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="how-to-use-preview">
+									 <pre class="prettyprint linenums lang-html pre-scrollable">
+&lt;script&gt;
+  $(function() {
+     //inputForm为需要验证表单ID
+	$("#inputForm").validate();
+  });
+&lt;/script&gt;
+									</pre>
+									</div>
+                                </div>
+                            </div>
+							</div>
+<!---==========================tab 2==================-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+							
+							
+							
+							<!-- ========================================== how-to-use-->
+                        <div class="tab-pane" id="validation-message">
+                            <h3>提示信息</h3>
+                            <div class="tabbable">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#validation-message-defalut-preview" data-toggle="tab">默认提示信息</a></li>
+									<li><a href="#validation-message-private-preview" data-toggle="tab">自定义提示信息</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane" id="validation-message-defalut-preview">
+									 <pre class="prettyprint linenums lang-html pre-scrollable">
+&lt;script&gt;
+  $(function() {
+     //inputForm为需要验证表单ID
+	$("#inputForm").validate();
+  });
+&lt;/script&gt;
+									</pre>
+									</div>
+									 <div class="tab-pane" id="validation-message-private-preview">
+									 <pre class="prettyprint linenums lang-html pre-scrollable">
+&lt;script&gt;
+  $(function() {
+     //inputForm为需要验证表单ID
+	$("#inputForm").validate();
+  });
+&lt;/script&gt;
+									</pre>
+									</div>
+                                </div>
+                            </div>
+							</div>
+							<!---==========================tab 2==================--->
+						
+					</div>
+				</div><!---.///=Row end===--->	
+			<!---validators===========================--->
 			<div class="row">
 				<div class="span3">
 					<div class="well" style="padding: 8px 0;">
