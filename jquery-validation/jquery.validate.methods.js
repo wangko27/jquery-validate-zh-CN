@@ -116,6 +116,14 @@ jQuery.validator.addMethod("notEqual", function(value, element, param) {
 jQuery.validator.addMethod("idCard", function(value, element) {
     return this.optional(element) || /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/.test(value) || /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[A-Z])$/.test(value);
 }, "请输入您的身份证号码");
+//日期比较 
+//使用方法 class="{required:true,dateISO:true,compareDate:'#StartDate'}"    
+jQuery.validator.addMethod("idCard", function(value, element, param) {
+    var startDate = $(param).val();
+    var date1 = Date.parse(startDate);
+    var date2 = Date.parse(value);
+    return date1 < date2;
+}, "结束日期必须大于开始日期!");
 /**
  * Return true, if the value is a valid vehicle identification number (VIN).
  *
